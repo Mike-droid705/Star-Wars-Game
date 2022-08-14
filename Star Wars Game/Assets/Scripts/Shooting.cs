@@ -220,6 +220,7 @@ public class Shooting : NetworkBehaviour
 
     [Command]
     void CmdFireMissile(int index) {
+        print("missile spawned");
         var hardpoint = hardpoints[index];
 
         var missileGO = Instantiate(missilePrefab, hardpoint.position, hardpoint.rotation);

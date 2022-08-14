@@ -50,7 +50,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneId: 0
   serverOnly: 0
-  m_AssetId: 
+  visible: 0
+  m_AssetId: 52f1c9ea06cfd154cb68ff9d1b66fc13
+  hasSpawned: 0
 --- !u!114 &114048121767222990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +68,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   available: 1
-  spawner: {fileID: 0}
   randomColor: {fileID: 7669440687796875101}
 --- !u!114 &7669440687796875101
 MonoBehaviour:
@@ -168,10 +169,11 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1d7c9f39b41d414d86e64f7761cd545, type: 2}
+  - {fileID: 2100000, guid: 960dddabb475782459a4477762023a72, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

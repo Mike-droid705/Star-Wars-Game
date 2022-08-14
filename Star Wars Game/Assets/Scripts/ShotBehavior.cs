@@ -59,8 +59,9 @@ public class ShotBehavior : NetworkBehaviour {
         RaycastHit hit;
 
         if(!isServer){return;}
-
-        if (Physics.SphereCast(ray, width, out hit, diff.magnitude, collisionMask.value)) {            var hfx = Instantiate(hitParticle, hit.point, hitParticle.transform.rotation);
+        
+        if (Physics.SphereCast(ray, width, out hit, diff.magnitude, collisionMask.value)) {
+            var hfx = Instantiate(hitParticle, hit.point, hitParticle.transform.rotation);
             Destroy(hfx, hfx.GetComponent<ParticleSystem>().main.duration);
             if(hit.collider.transform.parent.parent.GetComponent<Target>() != null){
                 Target other = hit.collider.transform.parent.parent.GetComponent<Target>();
