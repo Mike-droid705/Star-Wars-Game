@@ -27,7 +27,6 @@ public class PlayerHUD : NetworkBehaviour
 	AeroplaneController[] sceneEnemies;
     Shooting Shooting;
     AeroplaneController AeroplaneController;
-    Minimap Minimap;
 
     GameObject missileLockGO;
     Image missileLockImage;
@@ -44,14 +43,12 @@ public class PlayerHUD : NetworkBehaviour
         Shooting = GetComponent<Shooting>();
         AeroplaneController = GetComponent<AeroplaneController>();
         meter = FindObjectOfType<Meter>();
-        Minimap = FindObjectOfType<Minimap>();
 
         GameObject canvasGO = Instantiate(canvasPrefab, transform.position, transform. rotation);
         canvas = canvasGO.GetComponent<Canvas>();
     }
 
     void Start(){
-    	Minimap.player = transform;
         m_targetLayer = AeroplaneController.targetLayer;
 
         if(!isLocalPlayer){

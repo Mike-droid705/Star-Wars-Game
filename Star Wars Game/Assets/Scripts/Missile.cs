@@ -30,15 +30,19 @@ public class Missile : NetworkBehaviour {
 
     public Rigidbody Rigidbody { get; private set; }
 
+    void Awake(){
+        Rigidbody = GetComponent<Rigidbody>();
+    }
+
     [ClientRpc]
     public void Launch(Target owner, Target _target) {
         this.owner = owner;
         target = _target;
 
-        Rigidbody = GetComponent<Rigidbody>();
 
         lastPosition = Rigidbody.position;
         timer = lifetime;
+        print("missile launched");
     }
 
     void Explode() {
@@ -52,7 +56,6 @@ public class Missile : NetworkBehaviour {
 
         var hits = Physics.OverlapSphere(Rigidbody.position, damageRadius, collisionMask.value);
 
-        if(!isServer){return;}
         foreach (var hit in hits) {
             Target other = hit.GetComponent<Collider>().transform.parent.parent.GetComponent<Target>();
 
@@ -66,7 +69,6 @@ public class Missile : NetworkBehaviour {
     void CheckCollision() {
         //missile can travel very fast, collision may not be detected by physics system
         //use raycasts to check for collisions
-        if(!isServer){return;}
 
         var currentPosition = Rigidbody.position;
         var error = currentPosition - lastPosition;
@@ -112,6 +114,7 @@ public class Missile : NetworkBehaviour {
 
         //explode missile automatically after lifetime ends
         //timer is reused to keep missile graphics alive after explosion
+        if(!isServer){return;}
         if (timer == 0) {
             if (exploded) {
                 Destroy(gameObject);
